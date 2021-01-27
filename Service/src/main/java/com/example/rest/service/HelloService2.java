@@ -1,4 +1,4 @@
-package com.example.rest.client;
+package com.example.rest.service;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

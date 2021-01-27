@@ -1,4 +1,4 @@
-package com.example.rest.client;
+package com.example.rest.service;
 
 import com.example.grpc.server.GrpcServiceGrpc;
 import com.example.grpc.server.HelloRequest;
@@ -22,7 +22,7 @@ public class HelloService {
 
     @PostConstruct
     public void init() {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
                 .build();
 
@@ -31,8 +31,8 @@ public class HelloService {
 
     public String getResponse(String request) {
         HelloRequest helloRequest = HelloRequest.newBuilder()
-                .setRequest(request)
-                .build();
+               .setRequest(request)
+               .build();
 
         HelloResponse helloResponse = client.getGrpc(helloRequest);
         helloService2.redirectRequest(helloResponse.getResponse());

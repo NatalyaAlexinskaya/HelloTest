@@ -1,4 +1,4 @@
-package com.example.rest.client;
+package com.example.rest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
