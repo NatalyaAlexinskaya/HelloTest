@@ -1,4 +1,4 @@
-package com.example.rest.service;
+package com.example.rest;
 
 import com.example.grpc.server.GrpcServiceGrpc;
 import com.example.grpc.server.HelloRequest;
@@ -13,12 +13,7 @@ import javax.annotation.PostConstruct;
 @Service
 public class HelloService {
     @GrpcClient("service")
-    GrpcServiceGrpc.GrpcServiceBlockingStub client;
-    HelloService2 helloService2;
-
-    public HelloService(HelloService2 helloService2) {
-        this.helloService2 = helloService2;
-    }
+    private GrpcServiceGrpc.GrpcServiceBlockingStub client;
 
     @PostConstruct
     public void init() {
@@ -34,10 +29,8 @@ public class HelloService {
                .setRequest(request)
                .build();
 
-        HelloResponse helloResponse = client.getGrpc(helloRequest);
-        helloService2.redirectRequest(helloResponse.getResponse());
+        client.getGrpc(helloRequest);
 
-        return helloResponse.getResponse();
-
+        return request;
     }
 }
