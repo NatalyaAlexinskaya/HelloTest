@@ -1,15 +1,16 @@
 package com.example.service;
 
-import com.example.grpc.server.GrpcServiceGrpc;
+import com.example.grpc.server.HelloGrpcServiceGrpc;
 import com.example.grpc.server.HelloRequest;
 import com.example.grpc.server.HelloResponse;
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.server.service.GrpcService;
 
-@net.devh.boot.grpc.server.service.GrpcService
-public class GrpcService extends GrpcServiceGrpc.GrpcServiceImplBase {
+@GrpcService
+public class HelloGrpcService extends HelloGrpcServiceGrpc.HelloGrpcServiceImplBase {
     private HelloService2 helloService2;
 
-    public GrpcService(HelloService2 helloService2) {
+    public HelloGrpcService(HelloService2 helloService2) {
         this.helloService2 = helloService2;
     }
 

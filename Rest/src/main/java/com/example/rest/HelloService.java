@@ -1,8 +1,7 @@
 package com.example.rest;
 
-import com.example.grpc.server.GrpcServiceGrpc;
+import com.example.grpc.server.HelloGrpcServiceGrpc;
 import com.example.grpc.server.HelloRequest;
-import com.example.grpc.server.HelloResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -12,8 +11,8 @@ import javax.annotation.PostConstruct;
 
 @Service
 public class HelloService {
-    @GrpcClient("service")
-    private GrpcServiceGrpc.GrpcServiceBlockingStub client;
+    @GrpcClient("HelloGrpcService")
+    private HelloGrpcServiceGrpc.HelloGrpcServiceBlockingStub client;
 
     @PostConstruct
     public void init() {
@@ -21,7 +20,7 @@ public class HelloService {
                 .usePlaintext()
                 .build();
 
-        client = GrpcServiceGrpc.newBlockingStub(channel);
+        client = HelloGrpcServiceGrpc.newBlockingStub(channel);
     }
 
     public String getResponse(String request) {
