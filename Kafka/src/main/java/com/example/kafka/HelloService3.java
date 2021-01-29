@@ -15,7 +15,7 @@ public class HelloService3 {
     public static void main(String[] args) {
         final Logger logger = LoggerFactory.getLogger(HelloService3.class.getName());
 
-        String bootstrapServer = "127.0.0.1:9092";
+        String bootstrapServer = "kafka:9092";
         String groupId = "exampleGroup";
         String topic = "TestTopic";
 

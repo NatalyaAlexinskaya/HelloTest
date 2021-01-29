@@ -16,7 +16,7 @@ public class HelloService2 {
 
     @PostConstruct
     public void init() {
-        String bootstrapServer = "127.0.0.1:9092";
+        String bootstrapServer = "kafka:9092";
 
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
